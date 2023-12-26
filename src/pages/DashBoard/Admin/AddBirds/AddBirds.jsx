@@ -1,4 +1,8 @@
+import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
+//import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
 
 
 
@@ -7,7 +11,43 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const AddBirds = () => {
     const axiosPublic = useAxiosPublic();
+    const { register, handleSubmit, reset} = useForm()
+    const onSubmit = async (data) =>{
+        console.log(data);
+        const imageFile = { image: data.image[0] }
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
 
+        if (res.data.success) {
+        //   const formattedDate = selectedDate
+        //   ? format(selectedDate, 'yyyy-MM-dd')
+        //   : null;
+            // now send the menu item data to the server with the image url
+            const birdItem = {
+              
+                birdName: data.birdName,
+                image: res.data.data.display_url
+            }
+            // 
+            const birdResult = await axiosPublic.post('/birds', birdItem);
+            console.log(birdResult.data)
+            if(birdResult.data.insertedId){
+                // show success popup
+                reset();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${data.birdName} is added to the menu.`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        }
+        console.log( 'with image url', res.data);
+    };
 
     return (
         <div>
@@ -15,12 +55,12 @@ const AddBirds = () => {
 <div className="flex gap-6">
 <div className="form-control w-full ">
   <label className="label">
-    <span className="label-text">Test Name</span>
+    <span className="label-text">Name of the Bird</span>
   </label>
-  <input type="text" placeholder="Test Name" {...register("testName" , {required: true})} required  className="input input-bordered w-full " />
+  <input type="text" placeholder="Name of the Bird" {...register("birdName" , {required: true})} required  className="input input-bordered w-full " />
 
 </div>
-<div className="form-control w-full">
+{/* <div className="form-control w-full">
               <label className="label">
                 <span className="label-text"> Date</span>
               </label>
@@ -31,9 +71,9 @@ const AddBirds = () => {
                 placeholderText="Select Date"
                 className="input input-bordered w-full"
               />
-            </div>
+            </div> */}
 </div>
-<div className="flex gap-6">
+{/* <div className="flex gap-6">
 
 <div className="form-control w-full ">
   <label className="label">
@@ -87,7 +127,7 @@ const AddBirds = () => {
   </label>
   <textarea {...register('details', {required: true})} className="textarea textarea-bordered h-24" placeholder="Details"></textarea>
  
-</div>
+</div> */}
 <div className="form-control w-full my-6">
 <input {...register('image')} type="file" className="file-input w-full max-w-xs" />
 </div>
