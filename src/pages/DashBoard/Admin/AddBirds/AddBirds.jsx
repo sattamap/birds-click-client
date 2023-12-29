@@ -1,8 +1,6 @@
 import { useForm } from "react-hook-form";
-import useAxiosPublic from "../../../../hooks/useAxiosPublic";
-//import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 
 
 
@@ -10,7 +8,7 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddBirds = () => {
-    const axiosPublic = useAxiosPublic();
+  const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset} = useForm()
     const onSubmit = async (data) =>{
         console.log(data);

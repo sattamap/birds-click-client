@@ -11,8 +11,8 @@ const Dashboard = () => {
                     <span className="text-white">{user?.displayName}</span>
                 </div>
                 <ul className="menu p-4">
-                    <li><NavLink to="/dashboard/addTest">
-                        Add Test
+                    <li><NavLink to="/dashboard/addBirds">
+                        Add Birds
                     </NavLink>
                     </li>
 
