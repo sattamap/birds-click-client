@@ -4,6 +4,7 @@ import MyClicks from "../pages/MyClicks/MyClicks";
 import Main from "../layout/Main";
 import Dashboard from "../layout/Dashboard";
 import AddBirds from "../pages/DashBoard/Admin/AddBirds/AddBirds";
+import Login from "../pages/Login/Login";
 
 
 
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
         {
           path: "myCLicks",
           element: <MyClicks></MyClicks>,
+        },
+        {
+          path: "login",
+          element: <Login></Login>,
         },
    
       ],
