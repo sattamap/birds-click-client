@@ -24,12 +24,13 @@ const MyClicks = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {birds.map((bird) => (
                <div key={bird._id} className="card card-compact w-96 bg-base-100 shadow-xl">
-               <figure><img src={bird.image}  alt={bird.birdName} /></figure>
+               <figure><img src={bird?.image}  alt={bird?.birdNameENG} /></figure>
                <div className="card-body">
-                 <h2 className="card-title">{bird.birdName}</h2>
-                 <p>If a dog chews shoes whose shoes does he choose?</p>
+                <h2 className="card-title">{bird?.birdNameENG} ({bird?.birdNameBD})</h2>
+                 <p> {bird?.date}  </p>
+                   <p> {bird?.location} </p>
                  <div className="card-actions justify-end">
-                   <button className="btn btn-primary">More About</button>
+                   <button className="btn w-2/4 mx-auto btn-primary">More About</button>
                  </div>
                </div>
              </div>

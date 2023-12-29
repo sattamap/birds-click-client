@@ -20,17 +20,16 @@ const AddBirds = () => {
     });
 
     if (res.data.success) {
-      //   const formattedDate = selectedDate
-      //   ? format(selectedDate, 'yyyy-MM-dd')
-      //   : null;
-      // now send the menu item data to the server with the image url
       const birdItem = {
 
         birdNameENG: data.birdNameENG,
         birdNameBD: data.birdNameBD,
         location: data.location,
+        date: data.date,
+        description: data.description,
         camera: data.camera,
-        image: res.data.data.display_url
+        image: res.data.data.display_url,
+        loveStatus: 0,
       }
       // 
       const birdResult = await axiosPublic.post('/birds', birdItem);
@@ -41,7 +40,7 @@ const AddBirds = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: `${data.birdName} is added to the menu.`,
+          title: `${data.birdNameENG} is added to the menu.`,
           showConfirmButton: false,
           timer: 1500
         });
