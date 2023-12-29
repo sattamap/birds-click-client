@@ -9,133 +9,138 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const AddBirds = () => {
   const axiosPublic = useAxiosPublic();
-    const { register, handleSubmit, reset} = useForm()
-    const onSubmit = async (data) =>{
-        console.log(data);
-        const imageFile = { image: data.image[0] }
-        const res = await axiosPublic.post(image_hosting_api, imageFile, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
+  const { register, handleSubmit, reset } = useForm()
+  const onSubmit = async (data) => {
+    console.log(data);
+    const imageFile = { image: data.image[0] }
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    });
+
+    if (res.data.success) {
+      //   const formattedDate = selectedDate
+      //   ? format(selectedDate, 'yyyy-MM-dd')
+      //   : null;
+      // now send the menu item data to the server with the image url
+      const birdItem = {
+
+        birdNameENG: data.birdNameENG,
+        birdNameBD: data.birdNameBD,
+        location: data.location,
+        camera: data.camera,
+        image: res.data.data.display_url
+      }
+      // 
+      const birdResult = await axiosPublic.post('/birds', birdItem);
+      console.log(birdResult.data)
+      if (birdResult.data.insertedId) {
+        // show success popup
+        reset();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: `${data.birdName} is added to the menu.`,
+          showConfirmButton: false,
+          timer: 1500
         });
+      }
+    }
+    console.log('with image url', res.data);
+  };
 
-        if (res.data.success) {
-        //   const formattedDate = selectedDate
-        //   ? format(selectedDate, 'yyyy-MM-dd')
-        //   : null;
-            // now send the menu item data to the server with the image url
-            const birdItem = {
-              
-                birdName: data.birdName,
-                image: res.data.data.display_url
-            }
-            // 
-            const birdResult = await axiosPublic.post('/birds', birdItem);
-            console.log(birdResult.data)
-            if(birdResult.data.insertedId){
-                // show success popup
-                reset();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${data.birdName} is added to the menu.`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-            }
-        }
-        console.log( 'with image url', res.data);
-    };
+  return (
+    <div className="w-4/5 mx-auto bg-white p-8 my-10 rounded-md shadow-xl">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex gap-6 mb-6">
+          <div className="form-control w-full ">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              <span className="label-text">English Name of the Bird</span>
+            </label>
+            <input type="text" placeholder="e.g. Kingfisher" {...register("birdNameENG", { required: true })} required
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+            />
 
-    return (
-        <div>
-                      <form onSubmit={handleSubmit(onSubmit)}>
-<div className="flex gap-6">
-<div className="form-control w-full ">
-  <label className="label">
-    <span className="label-text">Name of the Bird</span>
-  </label>
-  <input type="text" placeholder="Name of the Bird" {...register("birdName" , {required: true})} required  className="input input-bordered w-full " />
+          </div>
+          <div className="form-control w-full ">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              <span className="label-text">পাখিটির বাংলা নাম</span>
+            </label>
+            <input type="text" placeholder="পাখিটির বাংলা নাম লিখুন ( যেমন: কাঠ শালিক )" {...register("birdNameBD", { required: true })} required
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+            />
 
-</div>
-{/* <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text"> Date</span>
-              </label>
-              <DatePicker
-                selected={selectedDate}
-                onChange={(date) => setSelectedDate(date)}
-                dateFormat="yyyy-MM-dd"
-                placeholderText="Select Date"
-                className="input input-bordered w-full"
-              />
-            </div> */}
-</div>
-{/* <div className="flex gap-6">
+          </div>
 
-<div className="form-control w-full ">
-  <label className="label">
-    <span className="label-text">Price</span>
-  </label>
-  <input type="text" placeholder="Price" {...register("price", {required: true})}  className="input input-bordered w-full " />
-
-</div>
-
-
-<div className="form-control w-full">
-  <label className="label">
-    <span className="label-text">Slots</span>
-  </label>
-  <input
-    type="number"
-    placeholder="Slots"
-    {...register('slots', { required: true })}
-    className="input input-bordered w-full"
-  />
-</div>
-
-</div>
-<div className="flex gap-6">
-
-<div className="form-control w-full ">
-  <label className="label">
-    <span className="label-text">Sample Type</span>
-  </label>
-  <input type="text" placeholder="Sample Type" {...register("sampleType", {required: true})}  className="input input-bordered w-full " />
-
-</div>
-
-
-<div className="form-control w-full">
-  <label className="label">
-    <span className="label-text">Pre Test Information</span>
-  </label>
-  <input
-    type="text"
-    placeholder="Pre Test Info"
-    {...register('preTestINfo', { required: true })}
-    className="input input-bordered w-full"
-  />
-</div>
-
-</div>
-<div className="form-control">
-  <label className="label">
-    <span className="label-text"> Details</span>
-  </label>
-  <textarea {...register('details', {required: true})} className="textarea textarea-bordered h-24" placeholder="Details"></textarea>
- 
-</div> */}
-<div className="form-control w-full my-6">
-<input {...register('image')} type="file" className="file-input w-full max-w-xs" />
-</div>
-      
-<button className="btn mt-10 bg-emerald-700 hover:bg-emerald-950 hover:text-white">
-  Add Test
-</button>
-    </form>
         </div>
-    );
+        <div className="flex gap-6 mb-6">
+          <div className="form-control w-full ">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              <span className="label-text">Location</span>
+            </label>
+            <input type="text" placeholder="e.g. Kaptai Lake, Rangamati" {...register("location", { required: true })} required
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+            />
+
+          </div>
+          <div className="form-control w-full ">
+            <label htmlFor="deadline" className="block text-gray-700 text-sm font-bold mb-2">
+              Date of Click
+            </label>
+            <input
+              type="date"
+              id="deadline"
+              {...register('date')}
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+
+          </div>
+        </div>
+        <div className="flex gap-6 mb-6">
+          <div className="form-control w-full ">
+            <label htmlFor="description" className="block text-gray-700 text-sm font-bold mb-2">
+              Description About the Bird
+            </label>
+            <textarea
+              id="description"
+              placeholder="Write a description about the bird . . . . ."
+              {...register('description')}
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+        </div>
+
+        <div className="flex gap-6">
+          <div className="form-control w-full ">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              <span className="label-text">Name of the Camera Setup</span>
+            </label>
+            <input type="text" placeholder="Name of the Camera Setup" {...register("camera", { required: true })} required
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+            />
+
+          </div>
+          <div className="form-control w-full">
+            <label htmlFor="image" className="block text-gray-700 text-sm font-bold mb-2">
+              Image of thr Bird
+            </label>
+            <input
+              type="file"
+              id="image"
+              {...register('image', { required: true })}
+              className="border rounded w-full py-[6px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+        </div>
+
+        <button className="btn mt-10 bg-emerald-700 hover:bg-emerald-950 hover:text-white">
+          Add Bird
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default AddBirds;
