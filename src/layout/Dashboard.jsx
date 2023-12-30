@@ -15,6 +15,10 @@ const Dashboard = () => {
                         Add Birds
                     </NavLink>
                     </li>
+                    <li><NavLink to="/dashboard/manage">
+                        Manage Items
+                    </NavLink>
+                    </li>
 
                     <div className="divider"></div>
                     <li>
