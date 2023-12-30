@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../../hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
   const axiosPublic = useAxiosPublic();
@@ -129,7 +130,9 @@ const handleDelete = async (bird) => {
                     >
                       Delete
                     </button>
-                    <button className="btn btn-neutral btn-xs">Edit</button>
+                   <Link to={`/dashboard/updateItem/${bird._id}`}>
+                   <button className="btn btn-neutral btn-xs">Edit</button>
+                   </Link>
                   </div>
                 </th>
               </tr>
