@@ -1,10 +1,19 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { FaUserAlt } from "react-icons/fa";
 
 
 const Navbar = () => {
+    const { user, logOut } = useAuth();
+
+    const handleLogOut = () => {
+      logOut()
+        .then(() => {})
+        .catch((error) => console.log(error));
+    };
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-slate-400 py-6 px-20">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -16,7 +25,7 @@ const Navbar = () => {
                                                         <Link to="/dashboard"><li><a>Dashboard</a></li></Link>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <a className="btn btn-ghost text-xl">NobleClicks</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -26,13 +35,46 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                <Link
+          {user ? (
+            <div className="nav-item flex items-center">
+              {user.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt={`${user.displayName}'s Profile`}
+                  className="btn btn-ghost btn-circle avatar"
+                />
+              ) : (
+                <FaUserAlt className="btn btn-ghost btn-circle avatar" />
+              )}
+              <span className="nav-link mx-2 text-white">
+                Welcome, {user.displayName?.split(" ")[0]}!
+              </span>
+              <button
+                className="btn bg-emerald-800 mx-2"
+                onClick={handleLogOut}
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div className="nav-item flex items-center">
+              <label
+                tabIndex={0}
+                className="btn btn-ghost btn-circle avatar text-white"
+              >
+                <div>
+                  <FaUserAlt />
+                </div>
+              </label>
+              <Link
                 to="/login"
                 className="btn btn-accent bg-emerald-800 ml-2"
               >
                 Login
               </Link>
-                </div>
+            </div>
+          )}
+        </div>
             </div>
         </div>
     );
