@@ -6,6 +6,7 @@ import Dashboard from "../layout/Dashboard";
 import AddBirds from "../pages/DashBoard/Admin/AddBirds/AddBirds";
 import Login from "../pages/Login/Login";
 import ManageItems from "../pages/DashBoard/Admin/ManageItems/ManageItems";
+import UpdateItems from "../pages/DashBoard/Admin/UpdateItems/UpdateItems";
 
 
 
@@ -41,12 +42,12 @@ export const router = createBrowserRouter([
               path: "manage",
               element:<ManageItems></ManageItems>,
             },
-            // {
-            //   path: 'editTask/:id',
-            //   element:<EditTask></EditTask>,
-            //   loader: ({params})=> fetch(`https://tmp-server-teal.vercel.app/tasks/${params.id}`)
+            {
+              path: 'updateItem/:id',
+              element:<UpdateItems></UpdateItems>,
+              loader: ({params})=> fetch(`http://localhost:5000/bird/${params.id}`)
       
-            // }
+            }
         
       ]
     }
