@@ -14,12 +14,12 @@ import PrivateRoutes from "./PrivateRoutes";
 export const router = createBrowserRouter([
     {
       path: "/",
+      element: <Home></Home>,
+    },
+    {
+      path: "/",
       element: <Main></Main>,
       children: [
-        {
-          path: "/",
-          element: <Home></Home>,
-        },
         {
           path: "myCLicks",
           element: <MyClicks></MyClicks>,

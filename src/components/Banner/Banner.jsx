@@ -7,14 +7,14 @@ const Banner = () => {
     return (
         <div>
             
-            <div className="w-full bg-cover bg-center min-h-screen" style={{ backgroundImage: `url(${banner1})` }}>
+            <div className="w-full bg-cover bg-center min-h-screen absolute" style={{ backgroundImage: `url(${banner1})` }}>
             <Navbar></Navbar>  
               
-                <div className="hero-content text-center text-neutral-content">
+                <div className="flex justify-end max-w-7xl mx-auto my-40 md:my-28 text-center text-white">
                     <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                        <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <h1 className="mb-5 text-5xl font-bold">Avian Marvels in Pixels</h1>
+                        <p className="mb-5">A Visual Expedition Through My Lens.</p>
+                        <button className="btn bg-teal-600 hover:bg-teal-900 hover:text-slate-200">Explore</button>
                     </div>
                 </div>
             </div>
