@@ -1,5 +1,9 @@
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { MdLibraryAddCheck } from "react-icons/md";
+import { MdEditNote } from "react-icons/md";
+import { FaHome } from "react-icons/fa";
+import { MdOutlineCollections } from "react-icons/md";
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -12,18 +16,23 @@ const Dashboard = () => {
                 </div>
                 <ul className="menu p-4">
                     <li><NavLink to="/dashboard/addBirds">
-                        Add Birds
+                       <MdLibraryAddCheck></MdLibraryAddCheck> Add Birds
                     </NavLink>
                     </li>
                     <li><NavLink to="/dashboard/manage">
-                        Manage Items
+                       <MdEditNote></MdEditNote> Manage Items
                     </NavLink>
                     </li>
 
                     <div className="divider"></div>
                     <li>
                         <NavLink to="/">
-                            Home
+                          <FaHome></FaHome>  Home
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/myClicks">
+                          <MdOutlineCollections></MdOutlineCollections>  My Clicks
                         </NavLink>
                     </li>
 
