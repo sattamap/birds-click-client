@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { FaUserAlt } from "react-icons/fa";
+import Lottie from "lottie-react";
+import parrot from "../../../parrot.json";
 
 
 const Navbar = () => {
@@ -13,7 +15,7 @@ const Navbar = () => {
     };
     return (
         <div>
-            <div className="navbar bg-slate-400 py-6 px-20">
+            <div className="navbar  py-2 pr-16">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,7 +27,11 @@ const Navbar = () => {
                                                         <Link to="/dashboard"><li><a>Dashboard</a></li></Link>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">NobleClicks</a>
+                    <div className="w-32 h-32 -ml-2">
+                <Lottie animationData={parrot} loop={true} />
+            </div>
+                    <a className="btn btn-ghost text-xl">
+                        NobleClicks</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -76,6 +82,7 @@ const Navbar = () => {
           )}
         </div>
             </div>
+
         </div>
     );
 };

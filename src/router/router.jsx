@@ -7,6 +7,7 @@ import AddBirds from "../pages/DashBoard/Admin/AddBirds/AddBirds";
 import Login from "../pages/Login/Login";
 import ManageItems from "../pages/DashBoard/Admin/ManageItems/ManageItems";
 import UpdateItems from "../pages/DashBoard/Admin/UpdateItems/UpdateItems";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 
@@ -32,7 +33,7 @@ export const router = createBrowserRouter([
     },
     {
       path: "dashboard",
-      element:<Dashboard></Dashboard> ,
+      element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes> ,
       children: [
           {
               path: "addBirds",
