@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import banner1 from "../../assets/birds_click_banner.jpg"
 import Navbar from "../Navbar/Navbar";
 
@@ -14,7 +15,7 @@ const Banner = () => {
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold">Avian Marvels in Pixels</h1>
                         <p className="mb-5">A Visual Expedition Through My Lens.</p>
-                        <button className="btn bg-teal-600 hover:bg-teal-900 hover:text-slate-200">Explore</button>
+                        <Link to="/myClicks"><button className="btn bg-teal-600 hover:bg-teal-900 hover:text-slate-200">Explore</button></Link>
                     </div>
                 </div>
             </div>

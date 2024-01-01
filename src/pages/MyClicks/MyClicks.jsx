@@ -74,16 +74,17 @@ const MyClicks = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto my-10 ">
-      <div className="max-w-screen-xl mx-auto my-10 ">
+      <div className="max-w-screen-xl mx-auto my-10 flex items-center justify-center">
         <input
           type="text"
           placeholder="Search birds..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="border rounded w-2/6  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+          className="border rounded w-1/2  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
         />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className='flex justify-center'>
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto">
         {filteredBirds.map((bird) => (
           <div
             key={bird._id}
@@ -123,6 +124,7 @@ const MyClicks = () => {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );
