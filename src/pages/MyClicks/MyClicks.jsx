@@ -4,6 +4,7 @@ import { CiCalendarDate } from 'react-icons/ci';
 import { FaHeart, FaLocationDot } from 'react-icons/fa6';
 import { CiHeart } from 'react-icons/ci';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const MyClicks = () => {
   const [birds, setBirds] = useState([]);
@@ -119,7 +120,7 @@ const MyClicks = () => {
                     <CiHeart />
                   )}
                 </div>
-                <button className="btn btn-info">More About</button>
+                <Link to={`/details/${bird._id}`}><button className="btn btn-xs btn-info">More About</button></Link>
               </div>
             </div>
           </div>

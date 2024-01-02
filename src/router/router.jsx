@@ -8,6 +8,7 @@ import Login from "../pages/Login/Login";
 import ManageItems from "../pages/DashBoard/Admin/ManageItems/ManageItems";
 import UpdateItems from "../pages/DashBoard/Admin/UpdateItems/UpdateItems";
 import PrivateRoutes from "./PrivateRoutes";
+import Details from "../pages/Deatils/Details";
 
 
 
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
         {
           path: "myCLicks",
           element: <MyClicks></MyClicks>,
+        },
+        {
+          path: "details/:id",
+          element: <Details></Details>,
         },
         {
           path: "login",
