@@ -74,8 +74,7 @@ const Login = () => {
             <p className="text-center mt-3 text-sm">
               New Here? <Link to="/register" className="text-blue-500">Create an account</Link>
             </p>
-            {/* Include your GoogleLogin component here */}
-            <div className="divider">OR</div>
+         
        
           </div>
           

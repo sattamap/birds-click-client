@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 const ManageItems = () => {
   const axiosPublic = useAxiosPublic();
   const [birds, setBirds] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
   useEffect(() => {
     const fetchBirds = async () => {
@@ -20,7 +22,7 @@ const ManageItems = () => {
     fetchBirds();
   }, [axiosPublic]);
 
-const handleDelete = async (bird) => {
+  const handleDelete = async (bird) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -34,7 +36,7 @@ const handleDelete = async (bird) => {
         try {
           const res = await axiosPublic.delete(`/birds/${bird._id}`);
           console.log(res.data);
-  
+
           if (res.status === 200) {
             // refetch to update the ui
             const updatedBirds = birds.filter((b) => b._id !== bird._id);
@@ -67,8 +69,25 @@ const handleDelete = async (bird) => {
       }
     });
   };
-  
-  
+
+  const indexOfLastItem = (currentPage + 1) * itemsPerPage;
+  const indexOfFirstItem = currentPage * itemsPerPage;
+  const currentItems = birds.slice(indexOfFirstItem, indexOfLastItem);
+
+  const pages = Math.ceil(birds.length / itemsPerPage);
+  const pageNumbers = [...Array(pages).keys()];
+
+  const handlePageClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handlePrevClick = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
+  };
+
+  const handleNextClick = () => {
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, pages - 1));
+  };
 
   return (
     <div>
@@ -86,9 +105,9 @@ const handleDelete = async (bird) => {
             </tr>
           </thead>
           <tbody>
-            {birds.map((bird, index) => (
+            {currentItems.map((bird, index) => (
               <tr key={bird._id}>
-                <td>{index + 1}.</td>
+                <td>{index + indexOfFirstItem + 1}.</td>
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
@@ -119,15 +138,48 @@ const handleDelete = async (bird) => {
                     >
                       Delete
                     </button>
-                   <Link to={`/dashboard/updateItem/${bird._id}`}>
-                   <button className="btn btn-neutral btn-xs">Edit</button>
-                   </Link>
+                    <Link to={`/dashboard/updateItem/${bird._id}`}>
+                      <button className="btn btn-neutral btn-xs">Edit</button>
+                    </Link>
                   </div>
                 </th>
               </tr>
             ))}
           </tbody>
         </table>
+
+        {/* Pagination */}
+        <nav className="flex justify-center mt-10">
+          <button
+            className="btn btn-sm btn-info"
+            onClick={handlePrevClick}
+            disabled={currentPage === 0}
+          >
+            Previous
+          </button>
+          <ul className="flex list-none gap-10 mx-8 ">
+            {pageNumbers.map((pageNumber) => (
+              <li
+                key={pageNumber}
+                className={`pagination-item ${currentPage === pageNumber ? 'btn btn-sm bg-teal-950 text-white' : ''}`}
+              >
+                <button
+                  className="pagination-link"
+                  onClick={() => handlePageClick(pageNumber)}
+                >
+                  {pageNumber + 1}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button
+            className="btn btn-sm btn-info"
+            onClick={handleNextClick}
+            disabled={currentPage === pages - 1}
+          >
+            Next
+          </button>
+        </nav>
       </div>
     </div>
   );
