@@ -20,17 +20,6 @@ const ManageItems = () => {
     fetchBirds();
   }, [axiosPublic]);
 
-//   const handleDelete = async (birdId) => {
-//     try {
-//       // Make the API request to delete the bird
-//       await axiosPublic.delete(`/birds/${birdId}`);
-
-//       // Update the local state to reflect the deletion
-//       setBirds((prevBirds) => prevBirds.filter((bird) => bird._id !== birdId));
-//     } catch (error) {
-//       console.error('Error deleting bird:', error);
-//     }
-//   };
 const handleDelete = async (bird) => {
     Swal.fire({
       title: "Are you sure?",
