@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Autoplay, Pagination } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
 const Feature = () => {
   const [features, setFeatures] = useState([]);
@@ -44,6 +45,8 @@ const Feature = () => {
     autoplay={{
         delay: 2500,
         disableOnInteraction: false,
+        pauseOnMouseEnter: true, // Pause on mouse enter
+        pauseOnMouseLeave: true, // Resume on mouse leave
       }}
     pagination={{
       clickable: true,
@@ -79,7 +82,7 @@ const Feature = () => {
           />
           <div className="absolute inset-0 flex items-end">
             <div className="p-4 bg-opacity-80 bg-base-700 w-full">
-              <h2 className="text-xl font-bold text-white">{bird.birdNameENG}</h2>
+             <Link to={`/details/${bird._id}`}> <h2 className="text-xl font-bold text-white">{bird.birdNameENG}</h2></Link>
             </div>
           </div>
         </SwiperSlide>
@@ -90,3 +93,6 @@ const Feature = () => {
 };
 
 export default Feature;
+
+
+
