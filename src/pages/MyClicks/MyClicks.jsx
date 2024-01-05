@@ -137,7 +137,7 @@ const MyClicks = () => {
             <div
               key={bird._id}
               onClick={() => handleLoveClick(bird._id)}
-              className="card card-compact w-96 h-5/6 bg-base-100 shadow-xl"
+              className="card card-compact w-80 md:w-96 h-5/6 bg-base-100 shadow-xl"
             >
               <figure>
                 <img src={bird?.image} alt={bird?.birdNameENG} />
@@ -175,12 +175,12 @@ const MyClicks = () => {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row items-center justify-center mt-4">
-  <div className="mb-4 lg:mb-0">
+      <div className="flex flex-col lg:flex-row items-center justify-center mt-6 py-6">
+  <div className="mb-4 lg:-mb-4">
     <select
       value={itemsPerPage}
       onChange={handleItemsPerPage}
-      className="mr-6 p-2 border border-solid border-teal-400 rounded-lg"
+      className="mr-6 p-2 lg:p-3 border border-solid border-teal-400 rounded-lg"
     >
       <option value={5}>5 per page</option>
       <option value={10}>10 per page</option>

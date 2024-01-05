@@ -59,14 +59,6 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="nav-item flex items-center">
-              <label
-                tabIndex={0}
-                className="btn btn-ghost btn-circle avatar text-white"
-              >
-                <div>
-                  <FaUserAlt />
-                </div>
-              </label>
               <Link
                 to="/login"
                 className="btn bg-teal-600 hover:bg-teal-900 hover:text-slate-200 ml-2"
