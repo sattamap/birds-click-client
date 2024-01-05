@@ -89,6 +89,11 @@ const ManageItems = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, pages - 1));
   };
 
+  const handleItemsPerPageChange = (newItemsPerPage) => {
+    setItemsPerPage(newItemsPerPage);
+    // You can perform additional logic when itemsPerPage changes, e.g., fetch data with the new itemsPerPage
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -150,6 +155,11 @@ const ManageItems = () => {
 
         {/* Pagination */}
         <nav className="flex justify-center mt-10">
+        <select className="mr-6 border border-solid border-teal-400 rounded-lg" value={itemsPerPage} onChange={(e) => handleItemsPerPageChange(e.target.value)}>
+        <option value={5}>5 per page</option>
+        <option value={10}>10 per page</option>
+        {/* Add more options as needed */}
+      </select>
           <button
             className="btn btn-sm btn-info"
             onClick={handlePrevClick}

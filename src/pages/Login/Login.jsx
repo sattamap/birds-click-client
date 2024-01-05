@@ -4,15 +4,14 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 
 
-
 const Login = () => {
-    const { signIn } = useAuth();
+  const { signIn, sendPassResetEmail } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/dashboard/manage';
 
   const { register, handleSubmit } = useForm();
-
+  
   const onSubmit = (data) => {
     signIn(data.email, data.password)
       .then((result) => {
@@ -25,7 +24,33 @@ const Login = () => {
         });
 
         navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        Swal.fire({
+          title: 'Login Failed',
+          text: error.message,
+          icon: 'error',
+        });
       });
+  };
+
+  const handleForgotPassword = async (email) => {
+    try {
+      await sendPassResetEmail(email);
+      console.log('Password reset email sent successfully.');
+      Swal.fire({
+        title: 'Password Reset Email Sent',
+        text: 'Check your inbox for instructions to reset your password.',
+        icon: 'success',
+      });
+    } catch (error) {
+      console.error('Error sending password reset email:', error);
+      Swal.fire({
+        title: 'Error',
+        text: error.message,
+        icon: 'error',
+      });
+    }
   };
 
   return (
@@ -74,10 +99,16 @@ const Login = () => {
             <p className="text-center mt-3 text-sm">
               New Here? <Link to="/register" className="text-blue-500">Create an account</Link>
             </p>
-         
-       
+            <p className="text-center mt-3 text-sm">
+              Forgot your password?{' '}
+              <button
+                className="text-blue-500"
+                onClick={() => handleForgotPassword('sattamap@gmail.com')}
+              >
+                Reset it here
+              </button>
+            </p>
           </div>
-          
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ const Banner = () => {
     return (
         <div>
             
-            <div className="w-full bg-cover bg-center min-h-screen absolute" style={{ backgroundImage: `url(${banner1})` }}>
+            <div className="w-full bg-cover bg-center min-h-screen" style={{ backgroundImage: `url(${banner1})` }}>
             <Navbar></Navbar>  
               
                 <div className="flex justify-end max-w-7xl mx-auto my-40 md:my-28 text-center text-white">
