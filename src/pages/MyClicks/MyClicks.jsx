@@ -121,7 +121,7 @@ const MyClicks = () => {
 
 
   return (
-    <div className="max-w-screen-xl mx-auto my-10 ">
+    <div className="max-w-screen-xl mx-auto mt-10 ">
       <div className="max-w-screen-xl mx-auto my-10 flex items-center justify-center">
         <input
           type="text"
@@ -175,69 +175,71 @@ const MyClicks = () => {
         </div>
       </div>
 
-      <div className="flex justify-center mt-4">
-        <select
-          value={itemsPerPage}
-          onChange={handleItemsPerPage}
-          className=" rounded-lg  px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2"
+      <div className="flex flex-col lg:flex-row items-center justify-center mt-4">
+  <div className="mb-4 lg:mb-0">
+    <select
+      value={itemsPerPage}
+      onChange={handleItemsPerPage}
+      className="mr-6 p-2 border border-solid border-teal-400 rounded-lg"
+    >
+      <option value={5}>5 per page</option>
+      <option value={10}>10 per page</option>
+      <option value={20}>20 per page</option>
+    </select>
+  </div>
+  <nav className="flex flex-col lg:flex-row items-center justify-center mt-4">
+  <ul className="flex list-none">
+    <li>
+      <button
+        className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 mr-2 lg:mr-2"
+        onClick={() => handlePageChange(0)}
+        disabled={currentPage === 0}
+      >
+        First
+      </button>
+    </li>
+    <li>
+      <button
+        className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 mr-2 lg:mx-2"
+        onClick={handlePrevPage}
+        disabled={currentPage === 0}
+      >
+        Previous
+      </button>
+    </li>
+    {pages.map((page) => (
+      <li key={page}>
+        <button
+          className={`btn btn-xs sm:btn-sm md:btn-md ${currentPage === page ? 'bg-teal-950 text-white' : 'btn-info text-black'} mb-2 lg:mb-0 mr-2 lg:mx-2`}
+          onClick={() => handlePageChange(page)}
         >
-          <option value={5}>5 per page</option>
-          <option value={10}>10 per page</option>
-          <option value={20}>20 per page</option>
-        </select>
-        <nav className="flex items-center justify-center mt-4">
-          <ul className="flex list-none">
-            <li>
-              <button
-                className="btn btn-info"
-                onClick={() => handlePageChange(0)}
-                disabled={currentPage === 0}
-              >
-                First
-              </button>
-            </li>
-            <li>
-              <button
-                className="btn btn-info mx-2"
-                onClick={handlePrevPage}
-                disabled={currentPage === 0}
-              >
-                Previous
-              </button>
-            </li>
-            {pages.map((page) => (
-              <li key={page}>
-                <button
-                  className={`btn ${currentPage === page ? 'bg-teal-950 text-white' : 'btn-info text-black'} mx-2`}
-                  onClick={() => handlePageChange(page)}
-                >
-                  {page + 1}
-                </button>
-              </li>
-            ))}
+          {page + 1}
+        </button>
+      </li>
+    ))}
+    <li>
+      <button
+        className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 mr-2 lg:mx-2"
+        onClick={handleNextPage}
+        disabled={currentPage === pages.length - 1}
+      >
+        Next
+      </button>
+    </li>
+    <li>
+      <button
+        className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 lg:mx-2"
+        onClick={() => handlePageChange(pages.length - 1)}
+        disabled={currentPage === pages.length - 1}
+      >
+        Last
+      </button>
+    </li>
+  </ul>
+</nav>
 
-            <li>
-              <button
-                className="btn btn-info mx-2"
-                onClick={handleNextPage}
-                disabled={currentPage === pages.length - 1}
-              >
-                Next
-              </button>
-            </li>
-            <li>
-              <button
-                className="btn btn-info"
-                onClick={() => handlePageChange(pages.length - 1)}
-                disabled={currentPage === pages.length - 1}
-              >
-                Last
-              </button>
-            </li>
-          </ul>
-        </nav>
+</div>
 
-      </div>
     </div>
   );
 };

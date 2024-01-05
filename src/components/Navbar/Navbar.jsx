@@ -29,7 +29,9 @@ const Navbar = () => {
                     <Link to="/"><li><a>Home</a></li></Link>
                             <Link to="/myClicks"><li><a>My Clicks</a></li></Link>
                             <Link to="/about"><li><a>About Me</a></li></Link>
-                            <Link to="/dashboard/manage"><li><a>Dashboard</a></li></Link>
+                            {
+                              user?(<Link to="/dashboard/manage"><li><a>Dashboard</a></li></Link>):''
+                            }
                     </ul>
                 </div>
                 <div className="navbar-end">
