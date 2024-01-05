@@ -9,6 +9,8 @@ import ManageItems from "../pages/DashBoard/Admin/ManageItems/ManageItems";
 import UpdateItems from "../pages/DashBoard/Admin/UpdateItems/UpdateItems";
 import PrivateRoutes from "./PrivateRoutes";
 import Details from "../pages/Deatils/Details";
+import About from "../pages/About/About";
+import Contact from "../pages/Contact/Contact";
 
 
 
@@ -32,6 +34,14 @@ export const router = createBrowserRouter([
         {
           path: "login",
           element: <Login></Login>,
+        },
+        {
+          path: "about",
+          element: <About></About>,
+        },
+        {
+          path: "contact",
+          element: <Contact></Contact>,
         },
    
       ],

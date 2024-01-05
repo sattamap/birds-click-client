@@ -28,6 +28,7 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1 text-base font-bold text-white">
                     <Link to="/"><li><a>Home</a></li></Link>
                             <Link to="/myClicks"><li><a>My Clicks</a></li></Link>
+                            <Link to="/about"><li><a>About Me</a></li></Link>
                             <Link to="/dashboard/manage"><li><a>Dashboard</a></li></Link>
                     </ul>
                 </div>
@@ -79,6 +80,7 @@ const Navbar = () => {
   <ul tabIndex={0} className="mt-3 z-[1] shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
     <Link to="/"><li><a>Home</a></li></Link>
     <Link to="/myClicks"><li><a>My Clicks</a></li></Link>
+    <Link to="/about"><li><a>About Me</a></li></Link>
     <Link to="/dashboard/manage"><li><a>Dashboard</a></li></Link>
     {user ? (
       <li>
