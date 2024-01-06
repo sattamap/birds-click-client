@@ -18,10 +18,10 @@ const Navbar = () => {
             <div className="navbar  py-2 pr-16">
                 <div className="navbar-start">
                     
-                    <div className="w-32 h-32 -ml-2">
+                    <div className="md:w-32 md:h-32 -ml-2">
                 <Lottie animationData={parrot} loop={true} />
             </div>
-                    <h2 className=" text-2xl font-bold text-teal-50">
+                    <h2 className=" md:text-2xl font-bold text-teal-50">
                         Noble<span className="text-rose-600">C</span>licks</h2>
                 </div>
                 <div className="navbar-center hidden lg:flex">
