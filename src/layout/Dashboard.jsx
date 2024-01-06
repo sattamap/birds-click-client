@@ -1,18 +1,20 @@
 import { NavLink, Outlet } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+
 import { MdLibraryAddCheck } from "react-icons/md";
 import { MdEditNote } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { MdOutlineCollections } from "react-icons/md";
+import ciji from "../assets/ciji.png";
+
 
 const Dashboard = () => {
-    const { user } = useAuth();
+
     return (
         <div className="flex">
             <div className="w-64 min-h-screen bg-[#38a9a1]">
-                <div className="flex flex-col items-center justify-center p-4">
-                    <img src={user?.photoURL} alt="Profile" className="w-20 h-20 rounded-full mr-2" />
-                    <span className="text-white">{user?.displayName}</span>
+                <div className="flex flex-col items-center justify-center p-4 gap-4">
+                    <img src={ciji} alt="Profile" className="w-20 h-20 rounded-full mr-2" />
+                    <span className="text-white">Noble Ciji</span>
                 </div>
                 <ul className="menu p-4">
                     <li><NavLink to="/dashboard/addBirds">

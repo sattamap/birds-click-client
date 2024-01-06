@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { FaUserAlt } from "react-icons/fa";
 import Lottie from "lottie-react";
 import parrot from "../../../parrot.json";
+import ciji from "../../assets/ciji.png";
 
 
 const Navbar = () => {
@@ -38,15 +38,14 @@ const Navbar = () => {
              
           {user ? (
             <div className="nav-item flex items-center">
-              {user.photoURL ? (
+             
                 <img
-                  src={user.photoURL}
+                  src={ciji}
                   alt={`${user.displayName}'s Profile`}
                   className="btn btn-ghost btn-circle avatar"
                 />
-              ) : (
-                <FaUserAlt className="btn btn-ghost btn-circle avatar" />
-              )}
+
+              
               {/* <span className="nav-link mx-2 text-white">
                 Welcome, {user.displayName?.split(" ")[0]}!
               </span> */}

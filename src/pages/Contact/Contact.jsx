@@ -27,7 +27,7 @@ const Contact = () => {
     <div className="w-1/2 flex flex-col gap-8 justify-center items-center text-center lg:text-left">
     <h3 className="text-2xl font-bold">Lets Connect</h3>
             <p className="text-base font-medium">
-                Please fill out the form on this section to contact with me or call between 9:00 A.M and 8.00 P.M .
+                Please fill out the form on this section to contact with me between 9:00 A.M and 8.00 P.M .
             </p>
             {/* <div className=" ">
                <div className='flex flex-row gap-4 text-4xl font-bold mb-4'>

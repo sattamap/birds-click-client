@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import {useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
@@ -53,6 +53,14 @@ const Login = () => {
     }
   };
 
+  const handleRegisterClick = () => {
+    Swal.fire({
+        icon: 'info',
+        title: 'Registration Not Available',
+        text: 'Registration or new sign up account facility is not available yet. We appreciate your interest. Please check back later.',
+    });
+};
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-md">
@@ -97,13 +105,13 @@ const Login = () => {
               </div>
             </form>
             <p className="text-center mt-3 text-sm">
-              New Here? <Link to="/register" className="text-blue-500">Create an account</Link>
+              New Here? <button  onClick={handleRegisterClick} className="text-blue-500">Create an account</button>
             </p>
             <p className="text-center mt-3 text-sm">
               Forgot your password?{' '}
               <button
                 className="text-blue-500"
-                onClick={() => handleForgotPassword('sattamap@gmail.com')}
+                onClick={() => handleForgotPassword('noble.chakma@gmail.com')}
               >
                 Reset it here
               </button>

@@ -135,7 +135,7 @@ const MyClicks = () => {
     
       const pageButtons = [];
     
-      if (numberOfPages <= 4) {
+      if (numberOfPages <= 2) {
         // Render all page numbers
         pageButtons.push(...pages.map(renderPageButton));
       } else {
@@ -174,7 +174,7 @@ const MyClicks = () => {
     
       return (
         <ul className="flex list-none">
-          <li>
+          {/* <li>
             <button
               className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 mr-2 lg:mr-2"
               onClick={() => handlePageChange(0)}
@@ -182,7 +182,7 @@ const MyClicks = () => {
             >
               First
             </button>
-          </li>
+          </li> */}
           <li>
             <button
               className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 mr-2 lg:mx-2"
@@ -206,7 +206,7 @@ const MyClicks = () => {
               Next
             </button>
           </li>
-          <li>
+          {/* <li>
             <button
               className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 lg:mx-2"
               onClick={() => handlePageChange(numberOfPages - 1)}
@@ -214,7 +214,7 @@ const MyClicks = () => {
             >
               Last
             </button>
-          </li>
+          </li> */}
         </ul>
       );
     };
