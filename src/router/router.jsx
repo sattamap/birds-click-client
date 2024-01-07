@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
             {
               path: 'updateItem/:id',
               element:<UpdateItems></UpdateItems>,
-              loader: ({params})=> fetch(`https://birds-click-server.vercel.app/birds/${params.id}`)
+              loader: ({params})=> fetch(`http://localhost:5000/birds/${params.id}`)
       
             }
         

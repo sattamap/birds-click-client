@@ -248,7 +248,7 @@ const MyClicks = () => {
                 <h2 className="card-title text-sm lg:text-lg">
                   {bird?.birdNameENG} ( {bird?.birdNameBD} )
                 </h2>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2">
                     <CiCalendarDate></CiCalendarDate>
                     <p> {bird?.date} </p>
