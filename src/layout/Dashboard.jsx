@@ -13,7 +13,7 @@ const Dashboard = () => {
                     <img src={ciji} alt="Profile" className="w-20 h-20 rounded-full mr-2" />
                     <span className="text-white">Noble Ciji</span>
                 </div>
-                <ul className="menu p-4">
+                <ul className="menu text-white p-4">
                     <li>
                         <NavLink to="/dashboard/addBirds">
                             <MdLibraryAddCheck /> Add Birds

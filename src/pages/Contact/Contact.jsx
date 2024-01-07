@@ -25,7 +25,7 @@ const Contact = () => {
                             Please fill out the form on this section to contact with me between 9:00 A.M and 8:00 P.M.
                         </p>
                     </div>
-                    <div className="card w-full lg:max-w-sm shadow-2xl bg-base-100">
+                    <div className="card w-full lg:max-w-xs shadow-2xl bg-base-100">
                         <form ref={form} onSubmit={sendEmail} className="card-body p-6">
                             <div className="form-control mb-4">
                                 <label className="label">

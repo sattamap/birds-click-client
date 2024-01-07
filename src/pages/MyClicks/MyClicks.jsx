@@ -231,6 +231,11 @@ const MyClicks = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="border rounded w-1/2  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4"
+          style={
+            window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? { color: 'white' }
+              : {}
+          }
         />
       </div>
       <div className='flex justify-center'>
