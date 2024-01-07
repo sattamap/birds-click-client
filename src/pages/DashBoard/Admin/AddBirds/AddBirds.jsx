@@ -50,15 +50,15 @@ const AddBirds = () => {
   };
 
   return (
-    <div className="w-full mx-auto bg-white p-4 my-10 rounded-md shadow-xl md:w-4/5 lg:w-3/5 xl:w-2/5">
+    <div className="w-full mx-auto bg-white p-4 my-10 rounded-md shadow-xl md:w-4/5 lg:w-full xl:w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col md:flex-row gap-6 mb-6">
+        <div className="flex flex-col lg:flex-row gap-6 mb-6">
           <div className="form-control w-full ">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               <span className="label-text">English Name of the Bird</span>
             </label>
             <input type="text" placeholder="e.g. Kingfisher" {...register("birdNameENG", { required: true })} required
-              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm md:text-base" 
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm md:text-base"
             />
 
           </div>
@@ -67,19 +67,19 @@ const AddBirds = () => {
               <span className="label-text">পাখিটির বাংলা নাম</span>
             </label>
             <input type="text" placeholder="পাখিটির বাংলা নাম লিখুন ( যেমন: কাঠ শালিক )" {...register("birdNameBD", { required: true })} required
-              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm md:text-base" 
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm md:text-base"
             />
 
           </div>
 
         </div>
-        <div className="flex flex-col md:flex-row gap-6 mb-6">
+        <div className="flex flex-col lg:flex-row gap-6 mb-6">
           <div className="form-control w-full ">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               <span className="label-text">Location</span>
             </label>
             <input type="text" placeholder="e.g. Kaptai Lake, Rangamati" {...register("location", { required: true })} required
-              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm md:text-base" 
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm md:text-base"
             />
 
           </div>
@@ -111,13 +111,13 @@ const AddBirds = () => {
 
         </div>
 
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-6">
           <div className="form-control w-full ">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               <span className="label-text">Name of the Camera Setup</span>
             </label>
             <input type="text" placeholder="Camera Setup" {...register("camera", { required: true })} required
-              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm md:text-base" 
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-sm md:text-base"
             />
 
           </div>
@@ -133,10 +133,11 @@ const AddBirds = () => {
             />
           </div>
         </div>
-
-        <button className="btn mt-10 bg-emerald-700 hover:bg-emerald-950 hover:text-white">
-          Add Bird
-        </button>
+        <div className="flex justify-center">
+          <button className="btn w-1/2 mt-10 bg-emerald-700 text-white hover:bg-emerald-950 hover:text-white ">
+            Add Item
+          </button>
+        </div>
       </form>
     </div>
   );
