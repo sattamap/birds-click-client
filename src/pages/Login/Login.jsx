@@ -68,7 +68,7 @@ const Login = () => {
           <div className="text-center md:text-left mb-8">
             <h4 className="text-4xl font-bold mb-4">Welcome Back!</h4>
             <p className="text-base">
-              Log in to access your personalized dashboard and manage your tasks with ease. Your journey with our application continues here.
+            Log in to explore your bird photography dashboard. Manage your captures effortlessly and continue your avian journey here!
             </p>
           </div>
           <div>
