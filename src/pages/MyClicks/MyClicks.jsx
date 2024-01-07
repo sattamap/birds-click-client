@@ -234,7 +234,7 @@ const MyClicks = () => {
         />
       </div>
       <div className='flex justify-center'>
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 mx-auto">
           {filteredBirds.map((bird) => (
             <div
               key={bird._id}
