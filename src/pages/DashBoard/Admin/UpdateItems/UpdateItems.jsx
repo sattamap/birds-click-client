@@ -50,9 +50,9 @@ const UpdateItems = () => {
   };
 
   return (
-    <div className="w-4/5 mx-auto bg-white p-8 my-10 rounded-md shadow-xl">
+    <div className="w-full mx-auto bg-white p-4 my-10 rounded-md shadow-xl md:w-4/5 lg:w-full xl:w-full">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex gap-6 mb-6">
+        <div className="flex flex-col lg:flex-row gap-6 mb-6">
           <div className="form-control w-full ">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               <span className="label-text">English Name of the Bird</span>
@@ -73,7 +73,7 @@ const UpdateItems = () => {
           </div>
 
         </div>
-        <div className="flex gap-6 mb-6">
+        <div className="flex flex-col lg:flex-row gap-6 mb-6">
           <div className="form-control w-full ">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               <span className="label-text">Location</span>
@@ -113,7 +113,7 @@ const UpdateItems = () => {
 
         </div>
 
-        <div className="flex gap-6">
+        <div className="flex flex-col lg:flex-row gap-6 mb-6">
           <div className="form-control w-full ">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               <span className="label-text">Name of the Camera Setup</span>
@@ -133,13 +133,16 @@ const UpdateItems = () => {
               {...register('image', { required: true })}
               className="border rounded w-full py-[6px] px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
-             {errors.image && (
-    <p className="text-red-500 text-xs mt-1">Image is required.Please choose your image.</p>
+      <p className="text-teal-600 text-xs mt-1">
+  ** Image must be required. Please choose your image.
+  </p>
+  {errors.image && (
+    <p className="text-red-500 text-xs font-semibold mt-1">Image is required. Please choose your image.</p>
   )}
           </div>
         </div>
 
-        <button className="btn mt-10 bg-emerald-700 hover:bg-emerald-950 hover:text-white">
+        <button className="btn mt-10 bg-emerald-700 text-white hover:bg-emerald-950 hover:text-white">
           Update Item
         </button>
       </form>
