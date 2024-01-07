@@ -250,7 +250,7 @@ const MyClicks = () => {
                 <img src={bird?.image} alt={bird?.birdNameENG} />
               </figure>
               <div className="card-body">
-                <h2 className="card-title text-sm lg:text-lg">
+                <h2 className="card-title text-sm lg:text-sm">
                   {bird?.birdNameENG} ( {bird?.birdNameBD} )
                 </h2>
                 <div className="flex items-center justify-between text-xs">
@@ -282,7 +282,7 @@ const MyClicks = () => {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row items-center justify-center mt-6 py-6">
+      <div className="flex flex-col lg:flex-row items-center justify-center ">
         <div className="mb-4 lg:-mb-4">
           <select
             value={itemsPerPage}
