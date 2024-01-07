@@ -245,7 +245,7 @@ const MyClicks = () => {
                 <img src={bird?.image} alt={bird?.birdNameENG} />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">
+                <h2 className="card-title text-sm lg:text-lg">
                   {bird?.birdNameENG} ( {bird?.birdNameBD} )
                 </h2>
                 <div className="flex items-center justify-between">
