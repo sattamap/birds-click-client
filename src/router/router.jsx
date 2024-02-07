@@ -64,6 +64,14 @@ export const router = createBrowserRouter([
               loader: ({params})=> fetch(`https://birds-click-server.vercel.app/birds/${params.id}`)
       
             }
+
+
+
+
+
+
+
+
         
       ]
     }

@@ -91,8 +91,74 @@ const ManageItems = () => {
 
   const handleItemsPerPageChange = (newItemsPerPage) => {
     setItemsPerPage(newItemsPerPage);
-    // You can perform additional logic when itemsPerPage changes, e.g., fetch data with the new itemsPerPage
   };
+
+  const renderPageNumbers = () => {
+    const renderDots = (
+      <li key="dots" className="pagination-item">
+        <span className="pagination-dots">...</span>
+      </li>
+    );
+
+    const pageButtons = [];
+
+    if (pages <= 2) {
+      // Render all page numbers
+      pageButtons.push(...pageNumbers.map(renderPageButton));
+    } else {
+      // Render 1st page
+      pageButtons.push(renderPageButton(0));
+
+      // Render dots if not on the first or last few pages
+      if (currentPage > 1) {
+        pageButtons.push(renderDots);
+      }
+
+      // Render current page and adjacent pages
+      const start = Math.max(currentPage - 1, 1);
+      const end = Math.min(currentPage + 1, pages - 1);
+
+      for (let i = start; i <= end; i++) {
+        pageButtons.push(renderPageButton(i));
+      }
+
+      // Render dots if not on the first or last few pages
+      if (currentPage < pages - 2) {
+        pageButtons.push(renderDots);
+      }
+
+      // Render last page if not on the last page
+      if (currentPage < pages - 1) {
+        // Check if the page before the last page is selected
+        const isBeforeLastPage = currentPage === pages - 2;
+        
+        // Render the last page only if not before the last page
+        if (!isBeforeLastPage) {
+          pageButtons.push(renderPageButton(pages - 1));
+        }
+      }
+    }
+
+    return (
+      <ul className="flex list-none gap-2 mx-4">
+        {pageButtons}
+      </ul>
+    );
+  };
+
+  const renderPageButton = (pageNumber) => (
+    <li
+      key={pageNumber}
+      className={`pagination-item ${currentPage === pageNumber ? 'btn btn-xs sm:btn-sm md:btn-md bg-teal-950 text-white' : ''}`}
+    >
+      <button
+        className="pagination-link"
+        onClick={() => handlePageClick(pageNumber)}
+      >
+        {pageNumber + 1}
+      </button>
+    </li>
+  );
 
   return (
     <div>
@@ -152,45 +218,33 @@ const ManageItems = () => {
             ))}
           </tbody>
         </table>
-
-        {/* Pagination */}
-        <nav className="flex justify-center mt-10">
-        <select className="mr-6 border border-solid border-teal-400 rounded-lg" value={itemsPerPage} onChange={(e) => handleItemsPerPageChange(e.target.value)}>
-        <option value={5}>5 per page</option>
-        <option value={10}>10 per page</option>
-        {/* Add more options as needed */}
-      </select>
-          <button
-            className="btn btn-sm btn-info"
-            onClick={handlePrevClick}
-            disabled={currentPage === 0}
-          >
-            Previous
-          </button>
-          <ul className="flex list-none gap-10 mx-8 ">
-            {pageNumbers.map((pageNumber) => (
-              <li
-                key={pageNumber}
-                className={`pagination-item ${currentPage === pageNumber ? 'btn btn-sm bg-teal-950 text-white' : ''}`}
-              >
-                <button
-                  className="pagination-link"
-                  onClick={() => handlePageClick(pageNumber)}
-                >
-                  {pageNumber + 1}
-                </button>
-              </li>
-            ))}
-          </ul>
-          <button
-            className="btn btn-sm btn-info"
-            onClick={handleNextClick}
-            disabled={currentPage === pages - 1}
-          >
-            Next
-          </button>
-        </nav>
       </div>
+      {/* Pagination */}
+      <nav className="flex flex-col sm:flex-row items-center justify-center mt-10">
+  <select className="mb-4 sm:mb-0 mr-0 sm:mr-6 border border-solid border-teal-400 rounded-lg" value={itemsPerPage} onChange={(e) => handleItemsPerPageChange(e.target.value)}>
+    <option value={5}>5 per page</option>
+    <option value={10}>10 per page</option>
+    {/* Add more options as needed */}
+  </select>
+  <div className="flex flex-wrap justify-center sm:justify-start">
+    <button
+      className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 mr-2 lg:mx-2"
+      onClick={handlePrevClick}
+      disabled={currentPage === 0}
+    >
+      Previous
+    </button>
+    {renderPageNumbers()}
+    <button
+      className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 mr-2 lg:mx-2"
+      onClick={handleNextClick}
+      disabled={currentPage === pages - 1}
+    >
+      Next
+    </button>
+  </div>
+</nav>
+
     </div>
   );
 };
