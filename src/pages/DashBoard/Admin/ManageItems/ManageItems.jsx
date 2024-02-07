@@ -95,8 +95,8 @@ const ManageItems = () => {
 
   const renderPageNumbers = () => {
     const renderDots = (
-      <li key="dots" className="pagination-item">
-        <span className="pagination-dots">...</span>
+      <li key="dots" className="">
+        <span className="">...</span>
       </li>
     );
 
@@ -140,7 +140,7 @@ const ManageItems = () => {
     }
 
     return (
-      <ul className="flex list-none gap-2 mx-4">
+      <ul className="flex list-none items-center gap-2 mx-4">
         {pageButtons}
       </ul>
     );
@@ -226,17 +226,19 @@ const ManageItems = () => {
     <option value={10}>10 per page</option>
     {/* Add more options as needed */}
   </select>
-  <div className="flex flex-wrap justify-center sm:justify-start">
+  <div className="flex justify-center items-center">
     <button
-      className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 mr-2 lg:mx-2"
+      className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 mr-2 lg:mx-1" // Adjusted margin here
       onClick={handlePrevClick}
       disabled={currentPage === 0}
     >
       Previous
     </button>
-    {renderPageNumbers()}
+    <div className="flex items-center gap-2 -mt-2"> {/* Wrapped the page numbers div with flex */}
+      {renderPageNumbers()} {/* Render page numbers inside this div */}
+    </div>
     <button
-      className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 mr-2 lg:mx-2"
+      className="btn btn-xs sm:btn-sm md:btn-md btn-info mb-2 lg:mb-0 ml-2 lg:mx-1" // Adjusted margin here
       onClick={handleNextClick}
       disabled={currentPage === pages - 1}
     >
@@ -244,6 +246,7 @@ const ManageItems = () => {
     </button>
   </div>
 </nav>
+
 
     </div>
   );
