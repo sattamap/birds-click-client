@@ -13,7 +13,7 @@ const MyClicks = () => {
   const [userIpAddress, setUserIpAddress] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [itemsPerPage, setItemsPerPage] = useState(6);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -289,9 +289,9 @@ const MyClicks = () => {
             onChange={handleItemsPerPage}
             className="mr-6 p-2 lg:p-3 border border-solid border-teal-400 rounded-lg"
           >
-            <option value={5}>5 per page</option>
-            <option value={10}>10 per page</option>
-            <option value={20}>20 per page</option>
+            <option value={6}>6 per page</option>
+            <option value={9}>9 per page</option>
+            <option value={18}>18 per page</option>
           </select>
         </div>
         <nav className="flex flex-col lg:flex-row items-center justify-center mt-4">

@@ -234,7 +234,7 @@ const ManageItems = () => {
     >
       Previous
     </button>
-    <div className="flex items-center gap-2 -mt-2"> {/* Wrapped the page numbers div with flex */}
+    <div className="flex items-center gap-2 -mt-2 lg:-mt-1"> {/* Wrapped the page numbers div with flex */}
       {renderPageNumbers()} {/* Render page numbers inside this div */}
     </div>
     <button
